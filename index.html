@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Todo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="title-group">
+          <span class="badge">Daily Planner</span>
+          <h1>Dynamic Todo List</h1>
+        </div>
+        <button id="clearCompletedBtn" class="secondary-btn" type="button">Clear completed</button>
+      </header>
+
+      <main class="todo-panel">
+        <form id="todoForm" class="todo-form" autocomplete="off">
+          <label class="input-wrap">
+            <span class="sr-only">Add a new task</span>
+            <input id="taskInput" type="text" placeholder="What needs to be done?" maxlength="120" />
+          </label>
+          <button type="submit" class="primary-btn">Add task</button>
+        </form>
+
+        <div class="toolbar">
+          <div class="stats" aria-live="polite">
+            <span id="taskCount">0 tasks</span>
+          </div>
+          <div class="filters" role="tablist" aria-label="Task filters">
+            <button class="filter-btn active" data-filter="all" type="button">All</button>
+            <button class="filter-btn" data-filter="active" type="button">Active</button>
+            <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+          </div>
+        </div>
+
+        <ul id="taskList" class="task-list" aria-live="polite"></ul>
+
+        <div id="emptyState" class="empty-state hidden">
+          <p>No tasks here yet.</p>
+          <span>Add one to get started.</span>
+        </div>
+      </main>
+    </div>
+
+    <template id="taskItemTemplate">
+      <li class="task-item">
+        <label class="task-check">
+          <input type="checkbox" class="task-toggle" />
+          <span class="checkmark"></span>
+        </label>
+        <span class="task-text"></span>
+        <button class="delete-btn" type="button" aria-label="Delete task">Delete</button>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
